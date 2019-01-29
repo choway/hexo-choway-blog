@@ -1,0 +1,42 @@
+<div id="sidebar">
+    <aside id="kratos_about-2" class="widget amadeus_about clearfix">
+        <div class="photo-background">
+            <div class="photo-background" style="background:url(<%- url_for('images/about_bg.jpg') %>) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div>
+        </div>
+        <div class="photo-wrapper clearfix">
+            <div class="photo-wrapper-tip text-center">
+                <a href="<%- url_for() %>"><img class="about-photo" src="<%- url_for('images/about_me.jpg') %>" /></a>
+            </div>
+        </div>
+        <div class="textwidget">
+            <p style="text-align: center;font-weight:400;"><%= config.title %><br /><%= config.subtitle %></p>
+        </div>
+    </aside>
+
+    <% if (is_post()) { %>
+    <aside class="widget clearfix">
+        <h4 class="widget-title">文章目录</h4>
+        <%- toc(page.content, {
+            class: '',
+            list_number: false
+        }) %>
+    </aside>
+    <% } %>
+
+    <% if (site.categories.length) { %>
+    <aside class="widget clearfix">
+        <h4 class="widget-title">文章分类</h4>
+        <%- list_categories({show_count: false}) %>
+    </aside>
+    <% } %>
+
+    <% if (site.tags.length) { %>
+    <aside class="widget clearfix">
+        <h4 class="widget-title">标签聚合</h4>
+        <div class="tag_clouds">
+            <%- list_tags({show_count: false, style: 'none', separator: ''}) %>
+        </div>
+    </aside>
+    <% } %>
+
+</div>

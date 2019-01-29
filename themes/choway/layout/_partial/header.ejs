@@ -1,0 +1,24 @@
+<div id="kratos-header">
+    <header id="kratos-header-section">
+        <div class="container">
+            <div class="nav-header">
+                <a href="#" class="js-kratos-nav-toggle kratos-nav-toggle"><i></i></a>
+                <h1 id="kratos-logo"><a href="<%- url_for() %>"><%= config.title %></a></h1>
+                
+                <nav id="kratos-menu-wrap">
+                  <ul id="kratos-primary-menu" class="sf-menu">
+                  <% for (var i in theme.menu){ %>
+                    <li>
+                      <a href="<%- url_for(config.category_dir+theme.menu[i]) %>"><%= i %></a>
+                    </li>
+                  <% } %>
+                  </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+</div>
+
+<div class="kratos-start kratos-hero-2 kratos-post-header">
+    <div class="kratos-overlay kratos-post" style="background:#222831"></div>
+</div>

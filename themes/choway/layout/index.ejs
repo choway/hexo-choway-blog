@@ -1,0 +1,65 @@
+<% page.posts.each(function(post){ %>
+<article class="kratos-hentry clearfix">
+    <div class="kratos-entry-border-new clearfix">
+        <!-- 
+        <div class="kratos-entry-thumb-new">
+            <a href="<%- url_for(post.path) %>"><img src="" /></a>
+        </div>
+        -->
+        <div class="kratos-post-inner-new" style="margin-left:0; padding:20px;">
+            <header class="kratos-entry-header-new">
+                <a class="label" href="<%- url_for(post.path) %>">
+                    choway <i class="label-arrow"></i>
+                </a>
+                <h2 class="kratos-entry-title-new">
+                    <a href="<%- url_for(post.path) %>"><%- post.title %></a>
+                </h2>
+            </header>
+            <div class="kratos-entry-content-new">
+                <p><%- truncate(strip_html(post.excerpt), {length: 300}) %></p>
+            </div>
+        </div>
+        <div class="kratos-post-meta-new">
+            <span class="visible-lg visible-md visible-sm pull-left">
+                <a href="<%- url_for(post.path) %>"><i class="fa fa-calendar"></i> <%- date(post.date, 'YYYY-MM-DD') %></a>
+            </span>
+            <span class="pull-left">
+            </span>
+            <span class="pull-right">
+                <a class="read-more" href="<%- url_for(post.path) %>" title="阅读全文">
+                    阅读全文 <i class="fa fa-chevron-circle-right"></i>
+                </a>
+            </span>
+        </div>
+    </div>
+</article>
+<% }) %>
+
+<% if (page.total > 1) { %>
+<div class='text-center' id='page-footer'>
+    <ul class='pagination'>
+        <% if (page.prev != 0) { %>
+        <li><a href="<%- url_for(page.prev_link) %>" class="prev" title="上一页">&lt;</a></li>
+        <% } %>
+        <% if (page.current > 1) { %>
+            <% for(var i=1; i<page.current; i++) { %>
+                <% if (i==1) { %>
+                <li><a href="<%- url_for() %>"><%- i %></a></li>
+                <% } else { %>
+                <li><a href="/page/<%- i %>/"><%- i %></a></li>
+                <% } %>
+            <% } %>
+        <% } %>
+        <li class="active"><a href="<%- url_for(page.current_url) %>"><%- page.current %></a></li>
+        <% var maxpage = Math.ceil(page.total/page.per_page) %>
+        <% if (page.current < maxpage) { %>
+            <% for (i=page.current+1; i<=maxpage; i++) { %>
+            <li><a href="/page/<%- i %>/"><%- i %></a></li>
+            <% } %>
+        <% } %>
+        <% if (page.next != 0) { %>
+        <li><a href="<%- url_for(page.next_link) %>" class="next" title="下一页">&gt;</a></li>
+        <% } %>
+    </ul>
+</div>
+<% } %>

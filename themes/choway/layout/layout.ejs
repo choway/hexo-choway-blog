@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<%- partial('_partial/head') %>
+
+<body data-spy="scroll" data-target=".scrollspy">
+    <div id="kratos-wrapper">
+        <div id="kratos-page">
+            <%- partial('_partial/header') %>
+            
+            <div id="kratos-blog-post" style="background:#f5f5f5;">
+                <div class="container">
+                    <div class="row">
+                        <section id="main" class="col-md-8">
+                            <%- body %>
+                        </section>
+
+                        <aside id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm scrollspy">
+                            <%- partial('_partial/sidebar') %>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+
+            <%- partial('_partial/footer') %>
+        </div>
+    </div>
+</body>
+</html>
